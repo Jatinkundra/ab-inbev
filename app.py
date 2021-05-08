@@ -127,8 +127,8 @@ def predict():
     data = request.get_json(force=True)
 
     # convert data into dataframe
-    data.update((x, [y]) for x, y in data.items())
-    data_df = pd.DataFrame.from_dict(data)
+    # data.update((x, [y]) for x, y in data.items())
+    # data_df = pd.DataFrame.from_dict(data)
 
     # predictions
     # result = model.predict(data_df)
@@ -137,7 +137,7 @@ def predict():
     # output = {'results': int(result[0])}
 
     # return data
-    return jsonify(results=data_df)
+    return jsonify(results= data)
 
 if __name__ == '__main__':
     app.run(port = 5000, debug=True)
