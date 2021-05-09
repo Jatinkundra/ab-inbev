@@ -1,9 +1,7 @@
 import pandas as pd
 from flask import Flask, jsonify, request
-import pickle
-
-# load model
-# model = pickle.load(open('model.pkl','rb'))
+from functions import translate_all_languages
+import LanguageIdentifier
 
 # app
 app = Flask(__name__)
@@ -21,22 +19,14 @@ def predict():
 
     for i in data:
         dataset.append(data[i])
-    # convert data into dataframe
-    # data.update((x, [y]) for x, y in data.items())
-    # data_df = pd.DataFrame.from_dict(data)
 
-    # predictions
-    # result = model.predict(data_df)
+    from LanguageIdentifier import predict
+    language= predict(dataset[0])
 
-    # send back to browser 
-    
-    # output = {'results': int(result[0])}
-    
-    dataset= pd.DataFrame(dataset)
-    data= dataset.to_dict()
+    data_dict= translate_all_languages(language, dataset)
 
     # return data
-    return jsonify(results= data)
+    return jsonify(results= data_dict)
 
 if __name__ == '__main__':
     app.run(port = 5000, debug=True)
