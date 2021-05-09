@@ -1,3 +1,22 @@
+# Importing libraries
+import numpy as np
+import re
+import os
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader, RandomSampler, SequentialSampler
+import os
+
+# Importing the T5 modules from huggingface/transformers
+from transformers import T5Tokenizer, T5ForConditionalGeneration
+from transformers import AutoTokenizer, AutoModelWithLMHead
+
+from spellchecker import SpellChecker
+from autocorrect import Speller
+import json
+
 def translation_sentence(sentence, model, tokenizer):
     inputs= tokenizer(sentence, return_tensors="pt").input_ids
 
