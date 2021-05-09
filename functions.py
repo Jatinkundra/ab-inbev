@@ -109,9 +109,9 @@ def translate_all_languages(language, dataset):
         model_list, tokenizer_list= load_models_english()
         print("Step3\n\n\n\n")
         english_translated=[]
-        helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
+        helsinki_tokenizer = AutoTokenizer.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+lang+"-en")
         print("Step4\n\n\n\n")
-        helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
+        helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+lang+"-en")
         print("helsinki models loaded\n\n\n\n")
         english_translate= final_translate_for_eng(dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
         translated_dictionary["en"]= english_translate
@@ -124,8 +124,8 @@ def translate_all_languages(language, dataset):
                 continue
             else:
                 translations_list=[]
-                helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
-                helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
+                helsinki_tokenizer = AutoTokenizer.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
+                helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
                 translations_list= final_translate_for_other_languages(english_translate, model_list[j], tokenizer_list[j], helsinki_model, helsinki_tokenizer)
                 translated_dictionary[lang]= translations_list
                 j=j+1
