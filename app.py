@@ -19,8 +19,8 @@ def predict():
 
     dataset=[]
 
-    for i in x:
-        dataset.append(x[i])
+    for i in data:
+        dataset.append(data[i])
     # convert data into dataframe
     # data.update((x, [y]) for x, y in data.items())
     # data_df = pd.DataFrame.from_dict(data)
