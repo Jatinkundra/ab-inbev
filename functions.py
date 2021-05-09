@@ -103,10 +103,14 @@ def translate_all_languages(language, dataset):
         return translated_dictionary
     
     else:
+        print("Step1\n\n\n\n")
         model_reversal, tokenizer_reversal= load_model_other_than_english(language)
+        print("Step2\n\n\n\n")
         model_list, tokenizer_list= load_models_english()
+        print("Step3\n\n\n\n")
         english_translated=[]
         helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
+        print("Step4\n\n\n\n")
         helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
         print("helsinki models loaded\n\n\n\n")
         english_translate= final_translate_for_eng(dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
