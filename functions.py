@@ -73,7 +73,7 @@ def final_translate_for_other_languages(dataset, model, tokenizer, helsinki_mode
     return translated_sent
 
 def load_model_other_than_english(language):  
-    str= "models/"+language+"_en"
+    str= "/home/jatin26/ab-inbev/models/"+language+"_en"
     tokenizer=AutoTokenizer.from_pretrained(str)
     model=AutoModelWithLMHead.from_pretrained(str)
     return model, tokenizer
@@ -82,7 +82,7 @@ def load_models_english():
     model_list=[]
     tokenizer_list=[]
     for lang in ["fr","de","nl","it"]:
-        str= "models/en_"+lang
+        str= "/home/jatin26/ab-inbev/models/en_"+lang
         #print("model loaded = "+str)
         tokenizer_list.append(AutoTokenizer.from_pretrained(str))
         model_list.append(AutoModelWithLMHead.from_pretrained(str))
