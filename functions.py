@@ -92,14 +92,14 @@ def translate_all_languages(language, dataset):
     translated_dictionary={}
     if language=="en" :
         model_list, tokenizer_list= load_models_english()
-        i=0
+        j=0
         for lang in ["fr","de","nl","it"]:
             translations_list=[]
             helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
             helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
-            translations_list=final_translate_for_eng(dataset, model_list[i], tokenizer_list[i], helsinki_model, helsinki_tokenizer)
+            translations_list=final_translate_for_eng(dataset, model_list[j], tokenizer_list[j], helsinki_model, helsinki_tokenizer)
             translated_dictionary[lang]= translations_list
-            i=i+1
+            j=j+1
         return translated_dictionary
     
     else:
@@ -108,21 +108,23 @@ def translate_all_languages(language, dataset):
         english_translated=[]
         helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
         helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
+        print("helsinki models loaded\n\n\n\n")
         english_translate= final_translate_for_eng(dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
         translated_dictionary["en"]= english_translate
-        i=0
+        print("english sentences done\n\n\n\n")
+        j=0
         for lang in ["fr","de","nl","it"]:
             print("checking for : "+ lang)
             if lang==language:
-                i=i+1
+                j=j+1
                 continue
             else:
                 translations_list=[]
                 helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
                 helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
-                translations_list= final_translate_for_other_languages(english_translate, model_list[i], tokenizer_list[i], helsinki_model, helsinki_tokenizer)
+                translations_list= final_translate_for_other_languages(english_translate, model_list[j], tokenizer_list[j], helsinki_model, helsinki_tokenizer)
                 translated_dictionary[lang]= translations_list
-                i=i+1
+                j=j+1
         return translated_dictionary
         # translated={}
         # lang_list= ["fr","de","nl","it"]
