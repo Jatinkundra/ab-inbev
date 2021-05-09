@@ -14,11 +14,13 @@ app = Flask(__name__)
 def predict():
     # get data
     data = request.get_json(force=True)
+    print("data recieved")
 
     dataset=[]
 
     for i in data:
         dataset.append(data[i])
+    print(dataset[0])
 
     from LanguageIdentifier import predict
     language= predict(dataset[0])
