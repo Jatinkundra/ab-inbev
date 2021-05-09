@@ -64,7 +64,7 @@ def load_models_english():
         model_list.append(AutoModelWithLMHead.from_pretrained(str))
     return model_list, tokenizer_list
 
-def translate_all_languages_except_english(language, dataset):
+def translate_all_languages(language, dataset):
     translated_dictionary={}
     if(language=="en"){
         model_list, tokenizer_list= load_models_english()
