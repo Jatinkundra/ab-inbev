@@ -46,5 +46,6 @@
 ### *Using Google colab file*
 * Copy the google_colab file in google colab
 * This models folder has all the models pretrained in it
+* Link to the models folder : https://drive.google.com/drive/folders/1r3czZ3oxVlD9IqozEsVt2MVD5prUvu8F?usp=sharing
 * open the google colab file and in the load_models_english() and load_models_for_other_languages() add the path location of this shared folder once mounted in your own drive
 * We are really sorry for the inconvenience caused for this 
