@@ -356,10 +356,10 @@ thinc==7.4.0
 tokenizers==0.10.2
 toml==0.10.2
 toolz==0.11.1
-torch==1.8.1+cu101
+
 torchsummary==1.5.1
 torchtext==0.9.1
-torchvision==0.9.1+cu101
+
 tornado==5.1.1
 tqdm==4.41.1
 traitlets==5.0.5
