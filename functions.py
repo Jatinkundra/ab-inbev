@@ -85,7 +85,7 @@ def translate_all_languages_except_english(language, dataset):
         model_list, tokenizer_list= load_models_english()
         english_translated=[]
         helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ lang+"-en")
-        helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-en"+ lang+"-en")
+        helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-"+ lang+"-en")
         english_translate= final_translate_for_eng(dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
         translated_dictionary["en"]= english_translate
         i=0
