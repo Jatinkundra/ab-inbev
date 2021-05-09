@@ -79,7 +79,7 @@ def load_model_other_than_english(language):
     return model, tokenizer
 
 def load_model_english_2(language):  
-    str= "/home/jatin26/ab-inbev/models/en_"+lang
+    str= "/home/jatin26/ab-inbev/models/en_"+language
     tokenizer=AutoTokenizer.from_pretrained(str)
     model=AutoModelWithLMHead.from_pretrained(str)
     return model, tokenizer
