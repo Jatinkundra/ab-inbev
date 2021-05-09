@@ -20,7 +20,7 @@
    * We will be easing out this by being able to convert the text in images to the desired language and create valuable resources for on-the-ground sales.
    * This will increase global discoverability and brand awareness . 
    *  By this, we wil be able to translate two forms of chat : images and text together by just integrating the api in platforms like Whatsapp, slack etc.
-   *  ![alt text](https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/0.jpg?raw=true "Title") -> ![alt text](https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/1.jpg?raw=true "Title")
+   *  ![alt text](https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/0.jpeg?raw=true "Title") -> ![alt text](https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/1.jpeg?raw=true "Title")
 * **_Translation based on Intent_**
    * Intent Detection is a vital component of any task-oriented conversational system.
    *  In order to understand the user’s current goal, the system must leverage its intent detector to classify the user’s utterance (provided in varied natural language) into one of several predefined classes, that is, intents.
