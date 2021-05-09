@@ -24,7 +24,6 @@ def final_translate_for_eng(dataset, model, tokenizer, helsinki_model, helsinki_
             translated_sent.append(decoded_10)
         else:
             translated_sent.append(decoded_1)
-        print(i)
     return translated_sent
 
 def final_translate_for_other_languages(dataset, model, tokenizer, helsinki_model, helsinki_tokenizer):
@@ -47,7 +46,6 @@ def final_translate_for_other_languages(dataset, model, tokenizer, helsinki_mode
             translated_sent.append(decoded_10)
         else:
             translated_sent.append(decoded_1)
-        print(i)
     return translated_sent
 
 def load_model_other_than_english(language):  
