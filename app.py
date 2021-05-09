@@ -22,7 +22,8 @@ def predict():
 
     from LanguageIdentifier import predict
     language= predict(dataset[0])
-
+    
+    data_dict={}
     data_dict= translate_all_languages(language, dataset)
 
     # return data
