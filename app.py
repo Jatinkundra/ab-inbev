@@ -1,7 +1,6 @@
 import pandas as pd
 from flask import Flask, jsonify, request
 from functions import translate_all_languages
-from LanguageIdentifier import predict
 
 # app
 app = Flask(__name__)
@@ -23,10 +22,10 @@ def predict():
     print(dataset[0])
 
     
-    language= predict(dataset[0])
+    #language= predict(dataset[0])
 
     data_dict={}
-    data_dict= translate_all_languages(language, dataset)
+    data_dict= translate_all_languages("fr", dataset)
 
     # return data
     return jsonify(results= data_dict)
