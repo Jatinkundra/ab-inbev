@@ -68,7 +68,7 @@ def final_translate_for_other_languages(dataset, model, tokenizer, helsinki_mode
     return translated_sent
 
 def load_model_other_than_english(language):  
-    str= lang+"toenglishtrain/resulting_model/model_files"
+    str= "models/"+lang+"_en"
     tokenizer=AutoTokenizer.from_pretrained(str)
     model=AutoModelWithLMHead.from_pretrained(str)
     return model, tokenizer
@@ -77,7 +77,7 @@ def load_models_english():
     model_list=[]
     tokenizer_list=[]
     for lang in ["fr","de","nl","it"]:
-        str= lang+"train/resulting_model/model_files"
+        str= "models/en_"+lang
         #print("model loaded = "+str)
         tokenizer_list.append(AutoTokenizer.from_pretrained(str))
         model_list.append(AutoModelWithLMHead.from_pretrained(str))
