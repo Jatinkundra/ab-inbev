@@ -12,6 +12,7 @@
 ### *OUR FEATURES*  
  * **_Bad Word Filter_** <img src="https://media.giphy.com/media/2T2hGmgr155LUgk5nA/giphy.gif" width="40px">
     * We are providing a layer of bad word filter in order to avoid miscommunications.
+ * **_
 ### *OUR NOVELTIES*     <img src="https://media.giphy.com/media/boXE8z5vda35elvKhv/giphy.gif" width="40px">
 * **_Image language Translation for various products used overseas_**
    * In B2B,B2C conversations, invoices, bills , product images and many more things are used but sometimes language becomes the barriar in international trade. 
@@ -34,3 +35,8 @@
 * People around the globe who are dealing in international trade
 * People involved in B2B Businesses
 * People who don't know English
+
+### *Processing Specification*
+* Enter the data into API in dictionary/json format
+* Language specification is not needed, as it will be detected automatically
+* The data will be recieved as a json file containing all the languages data (could be converted into dataframe for better visualization)
