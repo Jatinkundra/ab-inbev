@@ -13,9 +13,12 @@ import os
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 from transformers import AutoTokenizer, AutoModelWithLMHead
 
-from spellchecker import SpellChecker
-from autocorrect import Speller
 import json
+import nltk
+nltk.download('wordnet')
+from nltk.translate.meteor_score import meteor_score
+from nltk.translate.bleu_score import sentence_bleu
+
 
 def translation_sentence(sentence, model, tokenizer):
     inputs= tokenizer(sentence, return_tensors="pt").input_ids
@@ -68,7 +71,7 @@ def final_translate_for_other_languages(dataset, model, tokenizer, helsinki_mode
     return translated_sent
 
 def load_model_other_than_english(language):  
-    str= "models/"+lang+"_en"
+    str= "/content/drive/MyDrive/AbInBev/models_git/"+language+"_en"
     tokenizer=AutoTokenizer.from_pretrained(str)
     model=AutoModelWithLMHead.from_pretrained(str)
     return model, tokenizer
@@ -77,7 +80,7 @@ def load_models_english():
     model_list=[]
     tokenizer_list=[]
     for lang in ["fr","de","nl","it"]:
-        str= "models/en_"+lang
+        str= "/content/drive/MyDrive/AbInBev/models_git/en_"+lang
         #print("model loaded = "+str)
         tokenizer_list.append(AutoTokenizer.from_pretrained(str))
         model_list.append(AutoModelWithLMHead.from_pretrained(str))
@@ -85,7 +88,7 @@ def load_models_english():
 
 def translate_all_languages(language, dataset):
     translated_dictionary={}
-    if(language=="en"){
+    if language=="en" :
         model_list, tokenizer_list= load_models_english()
         i=0
         for lang in ["fr","de","nl","it"]:
@@ -96,24 +99,26 @@ def translate_all_languages(language, dataset):
             translated_dictionary[lang]= translations_list
             i=i+1
         return translated_dictionary
-    }
-    else{
-        model_reversal, tokenizer_reversal= load_models_other_than_english(language)
+    
+    else:
+        model_reversal, tokenizer_reversal= load_model_other_than_english(language)
         model_list, tokenizer_list= load_models_english()
         english_translated=[]
-        helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ lang+"-en")
-        helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-"+ lang+"-en")
+        helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
+        helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
         english_translate= final_translate_for_eng(dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
         translated_dictionary["en"]= english_translate
         i=0
         for lang in ["fr","de","nl","it"]:
+            print("checking for : "+ lang)
             if lang==language:
                 i=i+1
                 continue
             else:
+                translations_list=[]
                 helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
                 helsinki_model =AutoModelWithLMHead.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
-                final_translate_for_other_languages((english_translate, model_list[i], tokenizer_list[i], helsinki_model, helsinki_tokenizer)
+                translations_list= final_translate_for_other_languages(english_translate, model_list[i], tokenizer_list[i], helsinki_model, helsinki_tokenizer)
                 translated_dictionary[lang]= translations_list
                 i=i+1
         return translated_dictionary
@@ -124,4 +129,4 @@ def translate_all_languages(language, dataset):
         # tokenizer_helinski = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+language+"-en")
         # i=0
         
-    }
+    
