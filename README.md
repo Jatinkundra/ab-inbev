@@ -42,3 +42,9 @@
 * Enter the data into API in dictionary/json format
 * Language specification is not needed, as it will be detected automatically
 * The data will be recieved as a json file containing all the languages data (could be converted into dataframe for better visualization)
+
+### *Using Google colab file*
+* Copy the google_colab file in google colab
+* This models folder has all the models pretrained in it
+* open the google colab file and in the load_models_english() and load_models_for_other_languages() add the path location of this shared folder once mounted in your own drive
+* We are really sorry for the inconvenience caused for this 
