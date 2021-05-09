@@ -31,7 +31,8 @@ def predict():
     # send back to browser 
     
     # output = {'results': int(result[0])}
-
+    
+    dataset= pd.DataFrame(dataset)
     data= dataset.to_dict()
 
     # return data
