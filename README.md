@@ -13,7 +13,11 @@
 language or empty or as you like. Please dont keep any data in the first row. Open the
 preprocessing.py in google colab or jupyter notebook and install the dependecies as 
 mentioned in the first three lines. Just input the excel sheet location and you
-will recieve an excel sheet of the translated sentences in your desired location <img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/format.png" width="700"> 
+will recieve an excel sheet of the translated sentences in your desired location
+<p align="center">
+<img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/demo.png" width="300" margin-left="700"> 
+   </p>
+
 
 ### *INTRODUCTION*
 #### Is English the only Language for Business<img src="https://media.giphy.com/media/dyX9ixfxMpOUGawfdK/giphy.gif" width="25px"><img src="https://media.giphy.com/media/ifHCnV5Z0cAwwlwNtK/giphy.gif" width="50px">
@@ -32,7 +36,7 @@ will recieve an excel sheet of the translated sentences in your desired location
    * We will be easing out this by being able to convert the text in images to the desired language and create valuable resources for on-the-ground sales.
    * This will increase global discoverability and brand awareness . 
    *  By this, we wil be able to translate two forms of chat : images and text together by just integrating the api in platforms like Whatsapp, slack etc.
-   *  <img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/1.jpeg" width="300">        <img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/0.jpeg" width="300">
+   *  <p align="center" ><img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/1.jpeg" width="250"> <img src="https://media.giphy.com/media/hU2y2OCpZLNTnIeYxh/giphy.gif" width="150">       <img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/0.jpeg" width="250"></p>
 * **_Translation based on Intent_**
    * Intent Detection is a vital component of any task-oriented conversational system.
    *  In order to understand the user’s current goal, the system must leverage its intent detector to classify the user’s utterance (provided in varied natural language) into one of several predefined classes, that is, intents.
