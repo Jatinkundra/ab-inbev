@@ -41,7 +41,8 @@
 ### *Processing Specification*
 * Enter the data into API in dictionary/json format
 * Language specification is not needed, as it will be detected automatically
-* The data will be recieved as a json file containing all the languages data (could be converted into dataframe for better visualization)
+* The data will be recieved as an excel file in preprocessing.py
+* Enter the path where you want to recieve the generated translated excel file in all other 4 languages
 
 ### *Using Google colab file*
 * Copy the google_colab file in google colab
