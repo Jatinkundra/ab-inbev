@@ -1,5 +1,7 @@
 import json
 import requests
+import pandas as pd
+
 # from LanguageIdentifier import predict
 heroku_url = 'http://jatin26.pythonanywhere.com/' # change to your app name
 # sample data
