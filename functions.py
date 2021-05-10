@@ -104,7 +104,7 @@ def translate_all_languages(language, dataset):
             model, tokenizer= load_model_english_2(lang) 
             helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
             helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
-            translations_list= final_translate_for_other_languages(english_translate, model, tokenizer, helsinki_model, helsinki_tokenizer)
+            translations_list= final_translate_for_other_languages(dataset, model, tokenizer, helsinki_model, helsinki_tokenizer)
             translated_dictionary[lang]= translations_list
 #             j=j+1
         return translated_dictionary
