@@ -5,7 +5,7 @@
 ---
 
 ### *Processing Specification*
-* Enter the data into API through code provided in **processing.py**
+* Enter the data into API through code provided in ***processing.py***
 * Language specification is not needed, as it will be detected automatically
 * The data will be recieved as an excel file in preprocessing.py
 * Enter the path where you want to recieve the generated translated excel file in all other 4 languages
