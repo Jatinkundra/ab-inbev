@@ -98,7 +98,7 @@ def translate_all_languages(language, dataset):
     translated_dictionary={}
     if language=="en" :
 #         model_list, tokenizer_list= load_models_english()
-        j=0
+#         j=0
         for lang in ["fr","de","nl","it"]:
             translations_list=[]
             model, tokenizer= load_model_english_2(lang) 
