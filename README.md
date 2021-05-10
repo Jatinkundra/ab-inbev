@@ -3,6 +3,13 @@
 ---
 ### We are team **Spammers** from *Thapar University, Patiala* Presenting our project on *Language Translation Layer*
 ---
+
+### *Processing Specification*
+* Enter the data into API through code provided in *processing.py*
+* Language specification is not needed, as it will be detected automatically
+* The data will be recieved as an excel file in preprocessing.py
+* Enter the path where you want to recieve the generated translated excel file in all other 4 languages
+
 ### *INTRODUCTION*
 #### Is English the only Language for Business<img src="https://media.giphy.com/media/dyX9ixfxMpOUGawfdK/giphy.gif" width="25px"><img src="https://media.giphy.com/media/ifHCnV5Z0cAwwlwNtK/giphy.gif" width="50px">
 #### English is the lingua franca of the business world, the most commonly taught foreign language in schools worldwide and the official language of 20 of the most important international organisations, but English is significantly less popular than we would like to believe. It is the second language of only 39 percent of the French population. In Italy, this figure is just shy of 35 percent, and in Spain it is less than 23 percent.The situation gets drastically worse when we take emerging markets into account: only 5.2 percent of people in Russia speak English fluently.
@@ -37,12 +44,6 @@
 * People around the globe who are dealing in international trade
 * People involved in B2B Businesses
 * People who don't know English
-
-### *Processing Specification*
-* Enter the data into API in dictionary/json format
-* Language specification is not needed, as it will be detected automatically
-* The data will be recieved as an excel file in preprocessing.py
-* Enter the path where you want to recieve the generated translated excel file in all other 4 languages
 
 ### *Using Google colab file*
 * Copy the google_colab file in google colab
