@@ -5,6 +5,7 @@
 ---
 
 ### *Processing Specification and Method*
+* Please install ***model_check_requirements.txt*** before running processing.py
 * Enter the data into API through code provided in ***processing.py***
 * Language specification is not needed, as it will be detected automatically
 * The data will be recieved as an excel file in preprocessing.py
@@ -59,4 +60,4 @@ will recieve an excel sheet of the translated sentences in your desired location
 * This models folder has all the models pretrained in it
 * Link to the models folder : https://drive.google.com/drive/folders/1r3czZ3oxVlD9IqozEsVt2MVD5prUvu8F?usp=sharing
 * open the google colab file and in the load_models_english() and load_models_for_other_languages() add the path location of this shared folder once mounted in your own drive
-* We are really sorry for the inconvenience caused for this 
+
