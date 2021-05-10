@@ -19,17 +19,17 @@ nltk.download('wordnet')
 from nltk.translate.meteor_score import meteor_score
 from nltk.translate.bleu_score import sentence_bleu
 
-def check_hate_speech(lang, chat):
-    str= "https://github.com/Jatinkundra/ab-inbev/blob/main/bad_words_checker/"+lang+".txt"
-    f=open(str)
-    b= list(f)
-    censored=""
-    for word in chat.split():
-        if word.lower()+"\n" in b:
-            word="*****"
-        censored+=word+" "
-    censored=censored[:-1]
-    return censored
+# def check_hate_speech(lang, chat):
+#     str= "https://github.com/Jatinkundra/ab-inbev/blob/main/bad_words_checker/"+lang+".txt"
+#     f=open(str)
+#     b= list(f)
+#     censored=""
+#     for word in chat.split():
+#         if word.lower()+"\n" in b:
+#             word="*****"
+#         censored+=word+" "
+#     censored=censored[:-1]
+#     return censored
 
 
 
@@ -41,10 +41,10 @@ def translation_sentence(sentence, model, tokenizer):
     decoded = tokenizer.decode(output[0], skip_special_tokens=True)
     return decoded
 
-def final_translate_for_eng(lang, dataset, model, tokenizer, helsinki_model, helsinki_tokenizer):
+def final_translate_for_eng(dataset, model, tokenizer, helsinki_model, helsinki_tokenizer):
     translated_sent=[]
     for i in range(len(dataset)):
-        dataset[i]= check_hate_speech(lang, dataset[i])
+#         dataset[i]= check_hate_speech(lang, dataset[i])
         decoded_10= translation_sentence(dataset[i] ,model, tokenizer)
         words= decoded_10.split()
         new_words= words[1:]
@@ -63,10 +63,10 @@ def final_translate_for_eng(lang, dataset, model, tokenizer, helsinki_model, hel
         print(i)
     return translated_sent
 
-def final_translate_for_other_languages(lang, dataset, model, tokenizer, helsinki_model, helsinki_tokenizer):
+def final_translate_for_other_languages(dataset, model, tokenizer, helsinki_model, helsinki_tokenizer):
     translated_sent=[]
     for i in range(len(dataset)):
-        dataset[i]= check_hate_speech(lang, dataset[i])
+#         dataset[i]= check_hate_speech(lang, dataset[i])
         decoded_10= translation_sentence(dataset[i] ,model, tokenizer)
         words= decoded_10.split()
         new_words= words[1:]
@@ -119,7 +119,7 @@ def translate_all_languages(language, dataset):
             model, tokenizer= load_model_english_2(lang) 
             helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
             helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
-            translations_list= final_translate_for_other_languages(lang, dataset, model, tokenizer, helsinki_model, helsinki_tokenizer)
+            translations_list= final_translate_for_other_languages(dataset, model, tokenizer, helsinki_model, helsinki_tokenizer)
             translated_dictionary[lang]= translations_list
 #             j=j+1
         return translated_dictionary
@@ -135,7 +135,7 @@ def translate_all_languages(language, dataset):
         print("Step4\n\n\n\n")
         helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en", force_download=True)
         print("helsinki models loaded\n\n\n\n")
-        english_translate= final_translate_for_eng("en", dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
+        english_translate= final_translate_for_eng(dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
         translated_dictionary["en"]= english_translate
         print("english sentences done\n\n\n\n")
         # j=0
@@ -149,7 +149,7 @@ def translate_all_languages(language, dataset):
                 model, tokenizer= load_model_english_2(lang)
                 helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
                 helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
-                translations_list= final_translate_for_other_languages(lang, english_translate, model, tokenizer, helsinki_model, helsinki_tokenizer)
+                translations_list= final_translate_for_other_languages(english_translate, model, tokenizer, helsinki_model, helsinki_tokenizer)
                 translated_dictionary[lang]= translations_list
                 # j=j+1
         return translated_dictionary
