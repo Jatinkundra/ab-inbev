@@ -9,6 +9,7 @@
 * Language specification is not needed, as it will be detected automatically
 * The data will be recieved as an excel file in preprocessing.py
 * Enter the path where you want to recieve the generated translated excel file in all other 4 languages
+* <img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/format.png" width="500"> 
 
 ### *INTRODUCTION*
 #### Is English the only Language for Business<img src="https://media.giphy.com/media/dyX9ixfxMpOUGawfdK/giphy.gif" width="25px"><img src="https://media.giphy.com/media/ifHCnV5Z0cAwwlwNtK/giphy.gif" width="50px">
