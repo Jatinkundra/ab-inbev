@@ -4,7 +4,7 @@
 ### We are team **Spammers** from *Thapar University, Patiala* Presenting our project on *Language Translation Layer*
 ---
 
-### *Processing Specification*
+### *Processing Specification and Method*
 * Enter the data into API through code provided in ***processing.py***
 * Language specification is not needed, as it will be detected automatically
 * The data will be recieved as an excel file in preprocessing.py
