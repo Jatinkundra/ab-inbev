@@ -9,7 +9,11 @@
 * Language specification is not needed, as it will be detected automatically
 * The data will be recieved as an excel file in preprocessing.py
 * Enter the path where you want to recieve the generated translated excel file in all other 4 languages
-* Please Enter the file in this format, the first row to be kept for the name of the language or empty or as you like. Please dont keep any data in the first row. Open the preprocessing.py in google colab or jupyter notebook and install the dependecies as mentioned in the first three lines. Just input the excel sheet location and you will recieve an excel sheet of the translated sentences in your desired location <img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/format.png" width="700"> 
+* Please Enter the file in this format, the first row to be kept for the name of the 
+language or empty or as you like. Please dont keep any data in the first row. Open the
+preprocessing.py in google colab or jupyter notebook and install the dependecies as 
+mentioned in the first three lines. Just input the excel sheet location and you
+will recieve an excel sheet of the translated sentences in your desired location <img src="https://github.com/Jatinkundra/ab-inbev/blob/main/image-translation_samples/format.png" width="700"> 
 
 ### *INTRODUCTION*
 #### Is English the only Language for Business<img src="https://media.giphy.com/media/dyX9ixfxMpOUGawfdK/giphy.gif" width="25px"><img src="https://media.giphy.com/media/ifHCnV5Z0cAwwlwNtK/giphy.gif" width="50px">
