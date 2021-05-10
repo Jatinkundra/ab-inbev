@@ -19,7 +19,6 @@ nltk.download('wordnet')
 from nltk.translate.meteor_score import meteor_score
 from nltk.translate.bleu_score import sentence_bleu
 
-
 def translation_sentence(sentence, model, tokenizer):
     inputs= tokenizer(sentence, return_tensors="pt").input_ids
 
