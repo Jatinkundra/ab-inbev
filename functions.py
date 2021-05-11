@@ -20,7 +20,7 @@ from nltk.translate.meteor_score import meteor_score
 from nltk.translate.bleu_score import sentence_bleu
 
 def check_hate_speech(lang, chat):
-    f=open("bad_words_checker/"+lang)
+    f=open("/home/jatin26/ab-inbev/bad_words_checker/"+lang)
     b= list(f)
     censored=""
     for word in chat.split():
