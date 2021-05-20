@@ -25,7 +25,7 @@ def predict():
     language= predict(dataset[0])
 
     data_dict={}
-    data_dict= translate_all_languages(language, dataset)
+    data_dict= translate_all_languages(language, dataset[1], dataset[:-1])
 
     # return data
     return jsonify(results= data_dict)
