@@ -43,7 +43,7 @@ def translation_sentence(sentence, model, tokenizer):
 def final_translate_for_eng(lang, dataset, model, tokenizer, helsinki_model, helsinki_tokenizer):
     translated_sent=[]
     for i in range(len(dataset)):
-        dataset[i]= check_hate_speech(lang, dataset[i])
+        
         decoded_10= translation_sentence(dataset[i] ,model, tokenizer)
         words= decoded_10.split()
         new_words= words[1:]
@@ -65,7 +65,7 @@ def final_translate_for_eng(lang, dataset, model, tokenizer, helsinki_model, hel
 def final_translate_for_other_languages(lang, dataset, model, tokenizer, helsinki_model, helsinki_tokenizer):
     translated_sent=[]
     for i in range(len(dataset)):
-        dataset[i]= check_hate_speech(lang, dataset[i])
+        
         decoded_10= translation_sentence(dataset[i] ,model, tokenizer)
         words= decoded_10.split()
         new_words= words[1:]
@@ -118,12 +118,14 @@ def translate_all_languages(language_1, language_2, dataset):
         model, tokenizer= load_model_english_2(lang) 
         helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
         helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
+        dataset[0]= check_hate_speech("en", dataset[0])
         translations_list= final_translate_for_other_languages(lang, dataset, model, tokenizer, helsinki_model, helsinki_tokenizer)
         translated_dictionary[lang]= translations_list
 #             j=j+1
         return translated_dictionary
     
     else:
+        language=language_1
         print("Step1\n\n\n\n")
         model_reversal, tokenizer_reversal= load_model_other_than_english(language)
         print("Step2\n\n\n\n")
@@ -134,6 +136,7 @@ def translate_all_languages(language_1, language_2, dataset):
         print("Step4\n\n\n\n")
         helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en", force_download=True)
         print("helsinki models loaded\n\n\n\n")
+        dataset[0]= check_hate_speech(language, dataset[0])
         english_translate= final_translate_for_eng(language, dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
         translated_dictionary["en"]= english_translate
         print("english sentences done\n\n\n\n")
