@@ -27,7 +27,7 @@ def check_hate_speech(lang, chat):
     censored=""
     for word in chat.split():
         if word.lower()+"\n" in b:
-            word="bad word"
+            word="*****"
         censored+=word+" "
     censored=censored[:-1]
     return censored
@@ -50,7 +50,7 @@ def final_translate_for_eng(lang, dataset, model, tokenizer, helsinki_model, hel
         words= decoded_10.split()
         new_words= words[1:]
         decoded_10= ' '.join(new_words)
-        decoded_10 = re.sub(r'[^\w\s]', '', decoded_10)
+        decoded_10 = re.sub(r'[{}@()./\|=+_><%]', '', decoded_10)
         decoded_1= translation_sentence(dataset[i], helsinki_model, helsinki_tokenizer)
         decoded_1 = re.sub(r'[^\w\s]', '', decoded_1)
         # decoded_1= translation(decoded_1, helsinki_model_reversal, helsinki_tokenizer_reversal)
@@ -74,7 +74,7 @@ def final_translate_for_other_languages(lang, dataset, model, tokenizer, helsink
         decoded_10= ' '.join(new_words)
         if decoded_10[0:6] == "to the":
           decoded_10= decoded_10[6:]
-        decoded_10 = re.sub(r'[^\w\s]', '', decoded_10)
+        decoded_10 = re.sub(r'[{}@()./\|=+_><%]', '', decoded_10)
         decoded_1= translation_sentence(dataset[i], helsinki_model, helsinki_tokenizer)
         decoded_1 = re.sub(r'[^\w\s]', '', decoded_1)
         # decoded_1= translation(decoded_1, helsinki_model_reversal, helsinki_tokenizer_reversal)
