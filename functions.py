@@ -138,7 +138,7 @@ def translate_all_languages(language_1, language_2, dataset):
         print("helsinki models loaded\n\n\n\n")
         dataset[0]= check_hate_speech(language, dataset[0])
         english_translate= final_translate_for_eng(language, dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
-        translated_dictionary["en"]= english_translate
+#         translated_dictionary["en"]= english_translate
         print("english sentences done\n\n\n\n")
         # j=0
         lang=language_2
