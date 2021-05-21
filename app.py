@@ -27,6 +27,8 @@ def predict():
     data_dict={}
     data_dict= translate_all_languages(language, dataset[1], dataset[:-1])
 
+    print(data_dict[dataset[1]][0])
+    
     file = open("/home/jatin26/ab-inbev/output.txt", "a")
     file.write(data_dict[dataset[1]][0])
     file.close()
