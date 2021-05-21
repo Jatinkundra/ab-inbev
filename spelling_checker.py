@@ -1,12 +1,14 @@
 from spellchecker import SpellChecker
 from autocorrect import Speller
 
-def spell_model_activate(lng):
+def spell_model_activate(lng, sentence):
     if lng=="it" or lng=="en":
         spell=Speller(lang=lng)
+	senten= spell_check_italian(sentence,spell)
     elif lng=="de" or lng=="fr":
         spell=SpellChecker(language=lng)
-    return spell
+	senten= check_spell_en_fr_de(sentence,spell)
+    return senten
 
 def check_spell_en_fr_de(sentence,spell):
     #lang= input("Enter the language")
