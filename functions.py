@@ -117,9 +117,17 @@ def translate_all_languages(language_1, language_2, dataset):
 #         j=0
         lang=language_2
         translations_list=[]
-        model, tokenizer= load_model_english_2(lang) 
-        helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
-        helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
+        try:
+            model and tokenizer
+        except NameError:
+            model, tokenizer= load_model_english_2(lang)
+            
+        try:
+            helsinki_model and helsinki_tokenizer
+        except NameError:
+            helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
+            helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang, force_download=True)
+        
         dataset[0]= check_hate_speech("en", dataset[0])
         print("Hate speech checked")
         dataset[0]= spell_model_activate("en", dataset[0]) #new
@@ -131,30 +139,42 @@ def translate_all_languages(language_1, language_2, dataset):
     
     else:
         language=language_1
-        print("Step1\n\n\n\n")
-        model_reversal, tokenizer_reversal= load_model_other_than_english(language)
-        print("Step2\n\n\n\n")
         
-        print("Step3\n\n\n\n")
-        english_translated=[]
-        helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
-        print("Step4\n\n\n\n")
-        helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en")
-        print("helsinki models loaded\n\n\n\n")
+        try:
+            model_reversal and tokenizer_reversal
+        except NameError:
+            model_reversal, tokenizer_reversal= load_model_other_than_english(language)
+    
+        try:
+            helsinki_model_reversal and helsinki_tokenizer_reversal
+        except NameError:
+            helsinki_tokenizer_reversal = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
+            helsinki_model_reversal =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en", force_download=True)
+        
+        
+#         print("helsinki models loaded\n\n\n\n")
         dataset[0]= check_hate_speech(language, dataset[0])
-        print("hate speech checked")
+#         print("hate speech checked")
         dataset[0]= spell_model_activate(language, dataset[0]) #new
-        print("Spelling check done")
-        english_translate= final_translate_for_eng(language, dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
+#         print("Spelling check done")
+        english_translate= final_translate_for_eng(language, dataset, model_reversal, tokenizer_reversal, helsinki_model_reversal, helsinki_tokenizer_reversal)
 #         translated_dictionary["en"]= english_translate
         print("english sentences done\n\n\n\n")
         # j=0
         lang=language_2
         
         translations_list=[]
-        model, tokenizer= load_model_english_2(lang)
-        helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
-        helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
+        try:
+            model and tokenizer
+        except NameError:
+            model, tokenizer= load_model_english_2(lang)
+        
+        try:
+            helsinki_model and helsinki_tokenizer
+        except NameError:
+            helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
+            helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang, force_download=True)
+            
         translations_list= final_translate_for_other_languages(lang, english_translate, model, tokenizer, helsinki_model, helsinki_tokenizer)
         translated_dictionary[lang]= translations_list
                 # j=j+1
