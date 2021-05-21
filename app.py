@@ -30,7 +30,7 @@ def predict():
     print(data_dict[dataset[1]])
     
     file = open("/home/jatin26/ab-inbev/output.txt", "a")
-    file.write(data_dict[dataset[1]][0])
+    file.writelines(data_dict[dataset[1]])
     file.close()
     # return data
     return jsonify(results= data_dict)
