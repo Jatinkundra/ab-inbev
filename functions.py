@@ -27,7 +27,7 @@ def check_hate_speech(lang, chat):
     censored=""
     for word in chat.split():
         if word.lower()+"\n" in b:
-            word="*****"
+            word="W****"
         censored+=word+" "
     censored=censored[:-1]
     return censored
