@@ -24,8 +24,8 @@ def spell_check_italian(sentence,spell):
 def spell_model_activate(lng, sentence):
     if lng=="it" or lng=="en":
         spell=Speller(lang=lng)
-	senten= spell_check_italian(sentence,spell)
+        senten= spell_check_italian(sentence,spell)
     elif lng=="de" or lng=="fr":
         spell=SpellChecker(language=lng)
-	senten= check_spell_en_fr_de(sentence,spell)
-    return senten
+        senten= check_spell_en_fr_de(sentence,spell)
+    return senten 
