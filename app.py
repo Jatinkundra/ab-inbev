@@ -31,7 +31,7 @@ def predict():
     file.write(data_dict[dataset[1]][0])
     file.close()
     # return data
-#     return jsonify(results= data_dict)
+    return jsonify(results= data_dict)
 
 if __name__ == '__main__':
     app.run(port = 6000, debug=True)
