@@ -29,7 +29,7 @@ def predict():
 
     print(data_dict[dataset[1]])
     
-    file = open("/home/jatin26/ab-inbev/output.txt", "a")
+    file = open("/home/jatin26/ab-inbev/output.txt", "w")
     file.writelines(data_dict[dataset[1]])
     file.close()
     # return data
