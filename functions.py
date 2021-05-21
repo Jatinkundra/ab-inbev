@@ -140,7 +140,9 @@ def translate_all_languages(language_1, language_2, dataset):
         helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en", force_download=True)
         print("helsinki models loaded\n\n\n\n")
         dataset[0]= check_hate_speech(language, dataset[0])
+        print("hate speech checked")
         dataset[0]= spell_model_activate(language, dataset[0]) #new
+        print("Spelling check done")
         english_translate= final_translate_for_eng(language, dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
 #         translated_dictionary["en"]= english_translate
         print("english sentences done\n\n\n\n")
