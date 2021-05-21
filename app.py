@@ -28,7 +28,7 @@ def predict():
     data_dict= translate_all_languages(language, dataset[1], dataset[:-1])
 
     file = open("output.txt", "a")
-    file.write(data_dict[dataset[1]])
+    file.write(data_dict[dataset[1]][0])
     file.close()
     # return data
 #     return jsonify(results= data_dict)
