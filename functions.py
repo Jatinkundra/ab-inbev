@@ -139,7 +139,7 @@ def translate_all_languages(language_1, language_2, dataset):
         english_translated=[]
         helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-"+ language+"-en")
         print("Step4\n\n\n\n")
-        helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en", force_download=True)
+        helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en")
         print("helsinki models loaded\n\n\n\n")
         dataset[0]= check_hate_speech(language, dataset[0])
         print("hate speech checked")
