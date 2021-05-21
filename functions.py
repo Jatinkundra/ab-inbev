@@ -19,6 +19,8 @@ nltk.download('wordnet')
 from nltk.translate.meteor_score import meteor_score
 from nltk.translate.bleu_score import sentence_bleu
 
+from spelling_checker import spell_model_activate #new
+
 def check_hate_speech(lang, chat):
     f=open("/home/jatin26/ab-inbev/bad_words_checker/"+lang)
     b= list(f)
@@ -119,6 +121,7 @@ def translate_all_languages(language_1, language_2, dataset):
         helsinki_tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-"+ lang)
         helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-en-"+lang)
         dataset[0]= check_hate_speech("en", dataset[0])
+        dataset[0]= spell_model_activate("en", dataset[0]) #new
         translations_list= final_translate_for_other_languages(lang, dataset, model, tokenizer, helsinki_model, helsinki_tokenizer)
         translated_dictionary[lang]= translations_list
 #             j=j+1
@@ -137,6 +140,7 @@ def translate_all_languages(language_1, language_2, dataset):
         helsinki_model =AutoModelWithLMHead.from_pretrained("/home/jatin26/ab-inbev/helsinki/opus-mt-"+language+"-en", force_download=True)
         print("helsinki models loaded\n\n\n\n")
         dataset[0]= check_hate_speech(language, dataset[0])
+        dataset[0]= spell_model_activate(language, dataset[0]) #new
         english_translate= final_translate_for_eng(language, dataset, model_reversal, tokenizer_reversal, helsinki_model, helsinki_tokenizer)
 #         translated_dictionary["en"]= english_translate
         print("english sentences done\n\n\n\n")
